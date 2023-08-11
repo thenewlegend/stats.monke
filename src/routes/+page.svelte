@@ -1,9 +1,9 @@
 <script>
     import { onMount } from 'svelte';
 
-    import { fetchAllMonkeys,fetchMonkeyDetails } from './getstats';
+    import { fetchBananasBalance,fetchBananaReserve,fetchAllMonkeys,fetchMonkeyDetails } from './getstats';
 
-    fetchAllMonkeys();
+    fetchBananasBalance('thenewlegend');
 
     onMount(async () => {
         const monkeyData = await fetchMonkeyDetails('thenewlegend');

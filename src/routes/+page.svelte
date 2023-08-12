@@ -1,24 +1,26 @@
 <script>
     import { onMount } from 'svelte';
 
-    import { fetchBananasBalance,fetchBananaReserve,fetchAllMonkeys,fetchMonkeyDetails } from './getstats';
+    import { sortMonkeys,fetchBananasBalance,fetchBananaReserve,fetchAllMonkeys,fetchMonkeyDetails } from './getstats';
 
-    fetchBananasBalance('thenewlegend');
+    
 
-    onMount(async () => {
-        const monkeyData = await fetchMonkeyDetails('thenewlegend');
+    async function getData(){
+        const monkeData = await fetchAllMonkeys();
+        sessionStorage.setItem('monkeData',JSON.stringify(monkeData));
+        const iterationCount = parseInt(sessionStorage.getItem('iterationCount')) || 0;
+        sessionStorage.setItem('iterationCount', (iterationCount + 1).toString());
+    }
 
-        if (monkeyData) {
-            // Access and process properties as before
-            const monkeyName = monkeyData.monkey;
-            const bananas = monkeyData.bananas;
+    onMount(() => {
+        getData(); // Call the function immediately
 
-            // Update the <p> element with the response data
-            const responsePara = document.getElementById('responseParagraph');
-            responsePara.textContent = `Monkey Name: ${monkeyName}, Bananas: ${bananas}`;
-        } else {
-            console.log('No monkey data found.');
-        }
+        const interval = 10000; // 10 seconds in milliseconds
+        const intervalId = setInterval(() => {
+            getData(); // Call the function
+        }, interval);
+
+        return () => clearInterval(intervalId); // Clear interval on component unmount
     });
 </script>
 

@@ -16,6 +16,16 @@ export async function fetchMonkeyDetails(accountName) {
     return response.rows[0];
 };
 
+export async function sortMonkeys(){
+    const monkeyData = await fetchAllMonkeys();
+    const monkeysWithZeroBananas = monkeyData.filter(monkey => monkey.bananas === "0.0000 BANANA");
+    const monkeysWithBananas = monkeyData.filter(monkey => monkey.bananas != "0.0000 BANANA");
+    return {
+        badMonkeys: monkeysWithZeroBananas,
+        goodMonkeys :monkeysWithBananas
+    };
+}
+
 export async function fetchAllMonkeys() {
     let accounts = [];
     let nextKey = null;

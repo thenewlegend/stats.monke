@@ -1,8 +1,6 @@
 import client from './APIClient';
 import { CONTRACT_NAME, TOKEN_CONTRACT_NAME } from '../config';
 
-console.log(CONTRACT_NAME);
-
 export async function fetchMonkeyDetails(accountName) {
     const response = await client.v1.chain.get_table_rows({
         code: CONTRACT_NAME,
@@ -16,8 +14,8 @@ export async function fetchMonkeyDetails(accountName) {
     return response.rows[0];
 };
 
-export async function sortMonkeys(){
-    const monkeyData = await fetchAllMonkeys();
+export function sortMonkeys(){
+    const monkeyData = JSON.parse(sessionStorage.getItem('monkeData'));
     const monkeysWithZeroBananas = monkeyData.filter(monkey => monkey.bananas === "0.0000 BANANA");
     const monkeysWithBananas = monkeyData.filter(monkey => monkey.bananas != "0.0000 BANANA");
     return {
@@ -25,6 +23,7 @@ export async function sortMonkeys(){
         goodMonkeys :monkeysWithBananas
     };
 }
+
 
 export async function fetchAllMonkeys() {
     let accounts = [];
@@ -132,7 +131,8 @@ export async function fetchBananaReserve() {
     
     return {
         reserveIn: row['reserve0'], // EOS
-        reserveOut: row['reserve1'] // BANANA
+        reserveOut: row['reserve1'], // BANANA
+        price : row['price1_last']
     };
 }
 

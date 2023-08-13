@@ -1,5 +1,5 @@
 <nav>
-    <a href="/" class="nav-link">Jungle is home</a>
+    <a href="/" class="nav-link">HOME</a>
     <a href="/kdgallery" class="nav-link">KD Gallery</a>
     <a href="/kdgallery" class="nav-link">Scared Monkeys</a>
     <a href="/kdgallery" class="nav-link">Feed the DAMN Monke</a>

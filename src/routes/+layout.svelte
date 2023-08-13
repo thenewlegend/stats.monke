@@ -19,18 +19,19 @@
 
 
 <style>
-	.container-b{
+
+	.container-b {
 		display: flex;
+		justify-content: space-between; /* Distributes items evenly along the main axis */
+		align-items: flex-start; /* Align items at the start of the cross axis */
 	}
 
-	.main{
-        max-height: 80vh;
-        overflow: auto;
-        padding: 20px;
-        box-sizing: border-box;
-		scrollbar-width: thin; /* For Firefox */
-        scrollbar-color: #f2bd1d #e3e3e3; /* For Firefox */
-        scrollbar-width: thin;
-        scrollbar-color: #f2bd1d transparent;
+	.main {
+		overflow: auto;
+		padding: 20px;
+		box-sizing: border-box;
+		scrollbar-width: thin;
+		scrollbar-color: #f2bd1d transparent;
+		/* Add any other styling you need */
 	}
 </style>

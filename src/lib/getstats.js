@@ -49,8 +49,8 @@ export function rankMonkeys(){
         const kdIntervals = [
                 { min: 0, max: 5, rank: 'Beginner' },
                 { min: 5, max: 20, rank: 'Intermediate' },
-                { min: 20, max: 50, rank: 'Advanced' },
-                { min: 50, max: 150, rank: 'Expert' },
+                { min: 20, max: 100, rank: 'Advanced' },
+                { min: 100, max: 150, rank: 'Expert' },
                 { min: 150, max: 200, rank: 'Legend' }
             ];
 

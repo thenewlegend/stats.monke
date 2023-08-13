@@ -11,14 +11,15 @@
             storeSortedMonkeys();
             rankMonkeys();
             listMonkeys();
+
         const interval = 10000
         const intervalId = setInterval(async () => {
             await getData();
             sortMonkeys();
             storeSortedMonkeys();
             rankMonkeys();
-            listMonkeys();
             updatePrice();
+            listMonkeys();
         }, interval);
 
         return () => clearInterval(intervalId); // Clear interval on component unmount
@@ -37,15 +38,8 @@
 
 </script>
 
-<table>
-    <tr>
-        <th>Monkey</th>
-        <th>Wins</th>
-        <th>Losses</th>
-        <th>Column 4</th>
-        <th>Column 5</th>
-        <th>Column 6</th>
-    </tr>
-</table>
+<link rel="stylesheet" href="src\routes\style.css">
 
-<ul id="badMonkeysList"></ul>
+<div class="table-container">
+    <table id ="jungle-stat"></table>
+</div>

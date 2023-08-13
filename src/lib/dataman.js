@@ -28,7 +28,7 @@ export function listMonkeys(){
         let kd = monkeRankStat[monke].kd;
         let rank = monkeRankStat[monke].rank;
 
-            listItem.textContent = `${monkey.monkey} | ( ${monkey.wins}, ${monkey.losses} )  |  K/D ( ${kd} ) |  ${rank} `;
+            listItem.textContent = `${monkey.monkey} | ( ${monkey.wins}, ${monkey.losses} )  |  K/D  ${kd}  |  ${rank} `;
             goodMonkeysList.appendChild(listItem);
     });
 

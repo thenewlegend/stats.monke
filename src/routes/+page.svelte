@@ -36,8 +36,6 @@
 
 </script>
 
-<h1>Monke Stats</h1>
-
 <p id="price"></p>
 <ul id="goodMonkeysList"></ul>
 <ul id="badMonkeysList"></ul>

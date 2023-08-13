@@ -1,9 +1,25 @@
 <script>
 	import Nav from "./Nav.svelte";
+	import Top from "./Top.svelte";
 </script>
 
-<div class="panel">
-	<Nav/>
+<div class="top">
+	<Top/>
 </div>
 
-<slot />
+<div class="container-b">
+	<div class="nav">
+	<Nav/>
+	</div>
+
+	<div class="main">
+		<slot />
+	</div>
+</div>
+
+
+<style>
+	.container-b{
+		display: flex;
+	}
+</style>

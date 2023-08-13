@@ -1,44 +1,29 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
     import {getData,storeSortedMonkeys,sortMonkeys,rankMonkeys,fetchBananasBalance,fetchAllMonkeys,fetchMonkeyDetails,fetchBananaReserve } from '$lib/getstats';
-    import {updatePrice,listMonkeys} from '$lib/dataman'
+    import {listMonkeys} from '$lib/dataman'
 
-    //Interval 1
+    let intervalId;
     onMount(async () => {
-        
         await getData();
-            sortMonkeys();
-            storeSortedMonkeys();
-            rankMonkeys();
-            listMonkeys();
+        sortMonkeys();
+        storeSortedMonkeys();
+        rankMonkeys();
+        listMonkeys();
 
-        const interval = 10000
-        const intervalId = setInterval(async () => {
-            await getData();
-            sortMonkeys();
-            storeSortedMonkeys();
-            rankMonkeys();
-            updatePrice();
+        const interval = 10000;
+        intervalId = setInterval(async () => {
             listMonkeys();
         }, interval);
-
-        return () => clearInterval(intervalId); // Clear interval on component unmount
     });
 
-    //Interval 2
-    onMount(async () => {
-        sessionStorage.setItem('priceBanana',parseFloat((await fetchBananaReserve()).price).toFixed(6));
-        updatePrice();
-        const interval = 55000
-        const intervalId = setInterval(async () => {
-            sessionStorage.setItem('priceBanana',parseFloat((await fetchBananaReserve()).price).toFixed(6));
-        }, interval);
-    return () => clearInterval(intervalId); // Clear interval on component unmount
+    onDestroy(() => {
+    clearInterval(intervalId);
     });
 
 </script>
 
-<link rel="stylesheet" href="src\routes\style.css">
+<link rel="stylesheet" href=".\style.css">
 
 <div class="table-container">
     <table id ="jungle-stat"></table>

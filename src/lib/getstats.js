@@ -82,7 +82,35 @@ export function rankMonkeys(){
 }
 
 
+export function leaderBoardList(rank) {
+    const rankData = JSON.parse(sessionStorage.getItem('rankStat'));
 
+    const dataArray = Object.entries(rankData).map(([username, stats]) => ({ username, ...stats }));
+    // Sort the array based on KD (in descending order)
+    dataArray.sort((a, b) => parseFloat(b.kd) - parseFloat(a.kd));
+
+    const userList = dataArray.filter(user => user.rank === rank);
+
+    if (rank === "Beginner") {
+        sessionStorage.setItem('beginnerStat', JSON.stringify(userList)); // Convert to JSON before storing
+    } else if (rank === "Intermediate") {
+        sessionStorage.setItem('intermediateStat', JSON.stringify(userList)); // Convert to JSON before storing
+    } else if (rank === "Advanced") {
+        sessionStorage.setItem('advancedStat', JSON.stringify(userList)); // Convert to JSON before storing
+    } else if (rank === "Expert") {
+        sessionStorage.setItem('expertStat', JSON.stringify(userList)); // Convert to JSON before storing
+    } else if (rank === "Legend") {
+        sessionStorage.setItem('legendStat', JSON.stringify(userList)); // Convert to JSON before storing
+    } else if (rank === "Special Grade") {
+        sessionStorage.setItem('specialGradeStat', JSON.stringify(userList)); // Convert to JSON before storing
+    } else {
+        alert('Leaderboard not found');
+    }
+}
+
+
+
+// PROTECTED
 export async function fetchAllMonkeys() {
     let accounts = [];
     let nextKey = null;

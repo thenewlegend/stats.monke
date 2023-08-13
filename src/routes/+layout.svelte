@@ -1,6 +1,23 @@
 <script>
 	import Nav from "./Nav.svelte";
 	import Top from "./Top.svelte";
+	import { onMount, onDestroy } from 'svelte';
+	import {getData,storeSortedMonkeys,sortMonkeys,rankMonkeys,fetchBananasBalance,fetchAllMonkeys,fetchMonkeyDetails,fetchBananaReserve } from '$lib/getstats';
+	let intervalId;
+    onMount(async () => {
+        await getData();
+
+        const interval = 10000;
+        intervalId = setInterval(async () => {
+            await getData();
+			sortMonkeys();
+            storeSortedMonkeys();
+            rankMonkeys();
+        }, interval);
+    });
+    onDestroy(() => {
+    clearInterval(intervalId);
+    });
 </script>
 
 <div class="top">
@@ -21,10 +38,13 @@
 <style>
 
 	.container-b {
-		display: flex;
-		justify-content: space-between; /* Distributes items evenly along the main axis */
-		align-items: flex-start; /* Align items at the start of the cross axis */
+		display: grid;
+		grid-template-columns: 1fr 4fr;
+		grid-gap: 16px;
+		align-items: flex-start;
 	}
+
+
 
 	.main {
 		overflow: auto;

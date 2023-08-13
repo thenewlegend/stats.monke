@@ -1,1 +1,0 @@
-<p>KD Gallery</p>

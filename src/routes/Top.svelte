@@ -3,24 +3,26 @@
     import { onMount } from 'svelte';
 
      onMount(async () => {
-
-        const interval = 10000
+        updatePrice();
+        const interval = 55000
         const intervalId = setInterval(async () => {
             updatePrice();
         }, interval);
 
-        return () => clearInterval(intervalId); // Clear interval on component unmount
+        return () => clearInterval(intervalId);
     });
 </script>
 
 <div class="container">
     <div class="left">
-    <img src="/advanced.png" alt="logo" style="height: 100px;">
+    <img src="/advanced.png" alt="logo" >
     </div>
 
     <div class="mid">
         <h1>Monke Stats</h1>
-    <span>1 BANANA ⇋ </span><span id="price"></span>
+    <div class="price">
+        <span>1 BANANA ⇋ </span><span id="price"></span>
+    </div>
     </div>
 
     <div class="right">
@@ -33,12 +35,23 @@
     .container{
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
         flex-wrap: wrap;
-        gap: 150px;
+        gap: 80px;
         user-select: none;
+        margin-top: 3.5%;
+        margin-bottom: 2%;
     }
 
+    img{
+        height: 100px;
+    }
+
+    .mid{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     #login {
     transition: background-color 0.5s, transform 0.2s;
@@ -57,4 +70,9 @@
         cursor: not-allowed ;
     }
 
+
+
+    @media (max-width: 768px) {
+
+    }
 </style>

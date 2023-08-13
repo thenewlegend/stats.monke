@@ -26,15 +26,12 @@ export function listMonkeys() {
             const timeDifferenceMs =  now - Date.parse(hideSince+'Z'); // Time difference in milliseconds
             const timeDifferenceUnhid =  now - Date.parse(unhidAt+'Z'); // Time difference in milliseconds
 
-
             const timeDifferenceString = hideSince === null ? 'Unhidden' : `${Math.floor(timeDifferenceMs / (1000 * 60 * 60 * 24))}d ${Math.floor((timeDifferenceMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h ${Math.floor((timeDifferenceMs % (1000 * 60 * 60)) / (1000 * 60))}m`;
 
             let timeDifferenceStringUnhid;
 
             try {
                 timeDifferenceStringUnhid = `${Math.floor(timeDifferenceUnhid / (1000 * 60 * 60 * 24))}d ${Math.floor((timeDifferenceUnhid % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h ${Math.floor((timeDifferenceUnhid % (1000 * 60 * 60)) / (1000 * 60))}m`;
-
-                console.log(timeDifferenceStringUnhid);
 
                 if(hideSince != null){
                     timeDifferenceStringUnhid = 'Hidden';
@@ -62,4 +59,40 @@ export function listMonkeys() {
     } else {
         console.log('Sorted Data not found');
     }
+}
+
+
+export function leaderBoard(rank) {
+    let monkeyData = [];
+
+    if (rank === "Beginner") {
+        monkeyData = JSON.parse(sessionStorage.getItem('beginnerStat'));
+    } else if (rank === "Intermediate") {
+        monkeyData = JSON.parse(sessionStorage.getItem('intermediateStat'));
+    } else if (rank === "Advanced") {
+        monkeyData = JSON.parse(sessionStorage.getItem('advancedStat'));
+    } else if (rank === "Expert") {
+        monkeyData = JSON.parse(sessionStorage.getItem('expertStat'));
+    } else if (rank === "Legend") {
+        monkeyData = JSON.parse(sessionStorage.getItem('legendStat'));
+    } else if (rank === "Special Grade") {
+        monkeyData = JSON.parse(sessionStorage.getItem('specialGradeStat'));
+    } else {
+        alert('Leaderboard not found');
+        return; // Exit the function if rank is not recognized
+    }
+
+    const dataTable = document.getElementById('leaderboard-stat');
+    dataTable.innerHTML = '';
+    dataTable.innerHTML = '<thead><tr><th>Username</th><th>Wins</th><th>Losses</th><th>K/D</th></tr><tbody></tbody>';
+    monkeyData.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.username}</td>
+            <td>${item.wins}</td>
+            <td>${item.losses}</td>
+            <td>${item.kd}</td>
+        `;
+        dataTable.appendChild(row);
+    });
 }

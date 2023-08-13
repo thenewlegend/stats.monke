@@ -1,9 +1,9 @@
 <nav>
-    <a href="/" class="nav-link">HOME</a>
-    <a href="/kdgallery" class="nav-link">KD Gallery</a>
-    <a href="/kdgallery" class="nav-link">Scared Monkeys</a>
-    <a href="/kdgallery" class="nav-link">Feed the DAMN Monke</a>
-    <a href="/kdgallery" class="nav-link">Hall of Shame</a>
+    <a href="/" class="nav-link">Home</a>
+    <a href="/leaderboard" class="nav-link">K/D Leaderboard</a>
+    <a href="/scared" class="nav-link">Scared Monkeys</a>
+    <a href="/feed" class="nav-link">Feed the DAMN Monke</a>
+    <a href="/shame" class="nav-link">Hall of Shame</a>
 </nav>
 
 <style>

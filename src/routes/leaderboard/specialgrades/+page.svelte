@@ -13,7 +13,7 @@
         leaderBoardList("Special Grade");
         leaderBoard("Special Grade");
 
-        const interval = 10000;
+        const interval = 5000;
         intervalId = setInterval(async () => {
             leaderBoardList("Special Grade");
             leaderBoard("Special Grade");

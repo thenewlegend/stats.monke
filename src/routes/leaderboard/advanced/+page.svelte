@@ -13,7 +13,7 @@
         leaderBoardList("Advanced");
         leaderBoard("Advanced");
 
-        const interval = 10000;
+        const interval = 5000;
         intervalId = setInterval(async () => {
             leaderBoardList("Advanced");
             leaderBoard("Advanced");

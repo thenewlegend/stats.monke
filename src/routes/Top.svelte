@@ -4,7 +4,7 @@
 
      onMount(async () => {
         updatePrice();
-        const interval = 55000
+        const interval = 20000
         const intervalId = setInterval(async () => {
             updatePrice();
         }, interval);

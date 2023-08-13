@@ -11,7 +11,7 @@
         rankMonkeys();
         listMonkeys();
 
-        const interval = 10000;
+        const interval = 5000;
         intervalId = setInterval(async () => {
             listMonkeys();
         }, interval);

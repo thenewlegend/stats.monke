@@ -13,7 +13,7 @@
         leaderBoardList("Legend");
         leaderBoard("Legend");
 
-        const interval = 10000;
+        const interval = 5000;
         intervalId = setInterval(async () => {
             leaderBoardList("Legend");
             leaderBoard("Legend");

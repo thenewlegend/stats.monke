@@ -5,6 +5,7 @@
 
     //Interval 1
     onMount(async () => {
+        
         await getData();
             sortMonkeys();
             storeSortedMonkeys();
@@ -36,6 +37,15 @@
 
 </script>
 
-<p id="price"></p>
-<ul id="goodMonkeysList"></ul>
+<table>
+    <tr>
+        <th>Monkey</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Column 4</th>
+        <th>Column 5</th>
+        <th>Column 6</th>
+    </tr>
+</table>
+
 <ul id="badMonkeysList"></ul>

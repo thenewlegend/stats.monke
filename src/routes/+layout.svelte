@@ -22,4 +22,15 @@
 	.container-b{
 		display: flex;
 	}
+
+	.main{
+        max-height: 80vh;
+        overflow: auto;
+        padding: 20px;
+        box-sizing: border-box;
+		scrollbar-width: thin; /* For Firefox */
+        scrollbar-color: #f2bd1d #e3e3e3; /* For Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: #f2bd1d transparent;
+	}
 </style>

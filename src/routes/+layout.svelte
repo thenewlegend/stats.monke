@@ -2,6 +2,8 @@
 	import Nav from "./Nav.svelte";
 </script>
 
-<Nav/>
+<div class="panel">
+	<Nav/>
+</div>
 
 <slot />

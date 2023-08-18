@@ -2,7 +2,7 @@
     import {updatePrice} from '$lib/dataman';
     import { onMount } from 'svelte';
 
-     onMount(async () => {
+    onMount(async () => {
         updatePrice();
         const interval = 20000
         const intervalId = setInterval(async () => {
@@ -11,6 +11,7 @@
 
         return () => clearInterval(intervalId);
     });
+     
 </script>
 
 <div class="container">

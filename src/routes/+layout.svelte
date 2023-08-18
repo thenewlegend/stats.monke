@@ -3,9 +3,13 @@
 	import Top from "./Top.svelte";
 	import { onMount, onDestroy } from 'svelte';
 	import {getData,storeSortedMonkeys,sortMonkeys,rankMonkeys,fetchBananasBalance,fetchAllMonkeys,fetchMonkeyDetails,fetchBananaReserve } from '$lib/getstats';
+
+	// import {updatePrice} from '$lib/dataman';
+
 	let intervalId;
     onMount(async () => {
         await getData();
+		
 
         const interval = 10000;
         intervalId = setInterval(async () => {
@@ -13,11 +17,14 @@
 			sortMonkeys();
             storeSortedMonkeys();
             rankMonkeys();
+			fetchBananaReserve();
         }, interval);
     });
     onDestroy(() => {
     clearInterval(intervalId);
     });
+
+	
 </script>
 
 <div class="top">

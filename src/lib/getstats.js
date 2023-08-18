@@ -47,11 +47,11 @@ export function rankMonkeys(){
         const kd = monkey.losses > 0 ? (monkey.wins / monkey.losses).toFixed(2) : (monkey.losses === 0 ? monkey.wins : 0);
 
         const kdIntervals = [
-                { min: 0, max: 5, rank: 'Beginner' },
-                { min: 5, max: 20, rank: 'Intermediate' },
-                { min: 20, max: 100, rank: 'Advanced' },
-                { min: 100, max: 150, rank: 'Expert' },
-                { min: 150, max: 200, rank: 'Legend' }
+                { min: 0, max: 1, rank: 'Beginner' },
+                { min: 1, max: 15, rank: 'Intermediate' },
+                { min: 15, max: 40, rank: 'Advanced' },
+                { min: 40, max: 80, rank: 'Expert' },
+                { min: 80, max: 100, rank: 'Legend' }
             ];
 
             function getRank(kd) {

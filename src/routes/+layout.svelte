@@ -9,7 +9,10 @@
 	let intervalId;
     onMount(async () => {
         await getData();
-		
+		sortMonkeys();
+        storeSortedMonkeys();
+        rankMonkeys();
+		fetchBananaReserve();
 
         const interval = 10000;
         intervalId = setInterval(async () => {
